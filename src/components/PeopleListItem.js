@@ -7,9 +7,15 @@ function PeopleListItem(props) {
 
   console.log("person", person)
 
+  useEffect(() => {
+    fetch(person.homeworld)
+      .then(res=>res.json())
+      .then(data=>setHomeworld(data))
+  }, [person])
+
   return (
     <ul>
-      <li>{person.name} - Homeworld: {homeworld}</li>
+      <li>{person.name} - Homeworld: {homeworld.name}</li>
     </ul>
   );
 }
